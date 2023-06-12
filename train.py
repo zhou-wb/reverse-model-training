@@ -14,7 +14,7 @@ img_dir = '/home/wenbin/Documents/rgbd-supervision/phases_images_masks/Washingto
 image_res = (480, 640)
 roi_res = (480, 640)
 plane_idxs = [i for i in range(3)]
-batch_size = 10
+batch_size = 20
 
 
 # Washington_Scene_V2_dataset = PairsLoader(data_path = img_dir, plane_idxs=plane_idxs, image_res=image_res, shuffle=True)
@@ -48,7 +48,7 @@ for i in range(epoch):
     # training steps
     reverse_prop.train()
     
-    train_loader = DataLoader(PairsLoader(os.path.join(img_dir, 'train'), plane_idxs=plane_idxs, image_res=image_res, shuffle=True), batch_size=1)
+    train_loader = DataLoader(PairsLoader(os.path.join(img_dir, 'train'), plane_idxs=plane_idxs, image_res=image_res, shuffle=True), batch_size=batch_size)
     
     for img_mask_phase in train_loader:
         img, mask, phase = img_mask_phase
